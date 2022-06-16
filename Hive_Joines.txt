@@ -1,0 +1,57 @@
+use hiveuse;
+
+
+CREATE table Phone(Id int,Brand string,Version string);
+
+INSERT INTO TABLE phone VALUES(1,"Xaiomi","11D");
+INSERT INTO TABLE phone VALUES(2,"Realme","10A");
+INSERT INTO TABLE phone VALUES(3,"Vivo","V5");
+INSERT INTO TABLE phone VALUES(4,"Samsung","M12");
+INSERT INTO TABLE phone VALUES(5,"iphone","13Pro");
+
+select * from phone;
+
+
+
+CREATE table IF NOT EXISTS  PhoneOrder(OrderId int,PhoneId int,Amount INT);
+INSERT INTO TABLE PhoneOrder(1,4,30000);
+INSERT INTO TABLE PhoneOrder(2,4,18000);
+INSERT INTO TABLE PhoneOrder(3,2,10000);
+INSERT INTO TABLE PhoneOrder(4,1,19000);
+INSERT INTO TABLE PhoneOrder(5,3,15000);
+
+
+
+---inner join
+SELECT p.id, p.brand, p.version
+FROM phone p JOIN phoneorder o
+ON (p.id = o.phoneid);
+
+
+---left outer join --- even if there are no matches in the right table it returns all the rows from the left table.
+SELECT *
+FROM phone p LEFT OUTER JOIN phoneorder o
+ON (p.id = o.phoneid);
+
+
+---right outer join.
+SELECT p.id, p.brand, p.version
+FROM phone p JOIN phoneorder o
+ON (p.id = o.phoneid);
+
+
+---full outer join ---this joined table contains either all the records from both the tables or fills in NULL
+SELECT *
+FROM phone p FULL OUTER JOIN phoneorder o
+ON (p.id = o.phoneid);
+
+
+
+
+/postgress
+
+create table secound(
+	S_id  int primary key,
+	s_name varchar(20) not null,
+	Dept_Id
+)
